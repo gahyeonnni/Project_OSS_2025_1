@@ -19,7 +19,8 @@ class Calculator:
             ['4', '5', '6', '*'],
             ['1', '2', '3', '-'],
             ['0', '.', 'C', '+'],
-            ['=']
+            ['='],
+            ['x⁴']  
         ]
 
         for row in buttons:
@@ -42,11 +43,14 @@ class Calculator:
                 self.expression = str(eval(self.expression))
             except Exception:
                 self.expression = "에러"
+        elif char == 'x⁴':
+            try:
+                value = eval(self.expression)
+                self.expression = str(value ** 4)
+            except Exception:
+                self.expression = "에러"
         else:
             self.expression += str(char)
 
         self.entry.delete(0, tk.END)
         self.entry.insert(tk.END, self.expression)
-
-
-
